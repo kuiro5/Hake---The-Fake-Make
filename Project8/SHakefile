@@ -1,0 +1,17 @@
+# sample Makefile for CMPSC 311 Project 8
+
+a x y : b c
+	recipe 1a
+	recipe 1b
+
+b : d
+	recipe 2a
+	recipe 2b
+
+c : e
+	recipe 3a
+	recipe 3b
+	recipe 3c
+
+clean:
+	recipe 4

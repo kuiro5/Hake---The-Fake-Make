@@ -1,0 +1,23 @@
+# CMPSC 311, Project 8, solution
+
+SRC = ./pr8.3.c
+LIB = cmpsc311.c .names.c macro.c recipe.c source.c target.c
+INC = cmpsc311.h names.h macro.h recipe.h source.h target.h
+OPT = -DMTIME=2
+
+# select the version of mtime() appropriate for your OS
+
+# Solaris, mtime() uses time_t st_mtime
+# OPT = -D_XOPEN_SOURCE=600
+
+# Linux, mtime() uses struct timespec st_mtim
+OPT = -D_XOPEN_SOURCE=700 -DMTIME=1
+
+# Mac OS X, mtime() uses struct timespec st_mtimespec
+# OPT = -DMTIME=2
+
+pr8 : ${SRC} ${LIB} ${INC}
+	gcc -std=c99 -Wall -Wextra $(OPT) -o pr8 ${SRC} ${LIB}
+
+clean:
+	rm -f pr8 a.out *.o

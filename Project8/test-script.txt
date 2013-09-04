@@ -1,0 +1,33 @@
+# test script for CMPSC 311 Project 8
+
+# Important - edit this file!
+#    change "make -n" to the name of your program
+
+while read in
+do
+  echo 'pr8 test:' $in
+  $in
+  echo
+done <<EOF
+  rm -f a b c d e
+  ./pr8
+  sleep 1
+  touch d
+  ./pr8
+  sleep 1
+  touch e
+  ./pr8
+  sleep 1
+  touch c
+  ./pr8
+  sleep 1
+  touch b
+  ./pr8
+  sleep 1
+  touch a
+  ./pr8
+  sleep 1
+  touch c
+  ./pr8
+  ./pr8 b c
+EOF
